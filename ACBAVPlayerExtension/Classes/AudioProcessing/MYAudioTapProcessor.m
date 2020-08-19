@@ -411,9 +411,11 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 		return;
 	}
 	
-	if (!self) return;
+	if (context == nil) return;
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
+	
+	if (!self) return;
 	
 	if (self.isBandpassFilterEnabled)
 	{
