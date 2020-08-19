@@ -402,6 +402,8 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 	
 	OSStatus status;
 	
+	if (!context) return;
+	
 	// Skip processing when format not supported.
 	if (!context->supportedTapProcessingFormat)
 	{
@@ -410,6 +412,8 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 	}
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
+	
+	if (!self) return;
 	
 	if (self.isBandpassFilterEnabled)
 	{
