@@ -411,7 +411,7 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 		return;
 	}
 	
-	if (!context->self) return;
+	if (!((__bridge MYAudioTapProcessor *)context->self)) return;
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
 	
