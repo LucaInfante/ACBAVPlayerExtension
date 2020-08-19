@@ -411,9 +411,10 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 		return;
 	}
 	
-			NSLog(@"uhm %@", context);
 			NSLog(@"uhm %@", context->self);
 
+	if (!context->self) return;
+	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
 	
 	if (!self) return;
