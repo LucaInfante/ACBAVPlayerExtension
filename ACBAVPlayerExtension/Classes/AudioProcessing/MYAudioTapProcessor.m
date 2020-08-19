@@ -289,10 +289,9 @@ static void tap_PrepareCallback(MTAudioProcessingTapRef tap, CMItemCount maxFram
 {
 	AVAudioTapProcessorContext *context = (AVAudioTapProcessorContext *)MTAudioProcessingTapGetStorage(tap);
     
-	if (((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled == NULL) return;
-
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
-    	self.format = [[AVAudioFormat alloc] initWithStreamDescription:processingFormat];
+    	
+	self.format = [[AVAudioFormat alloc] initWithStreamDescription:processingFormat];
 
 	// Store sample rate for -setCenterFrequency:.
 	context->sampleRate = processingFormat->mSampleRate;
