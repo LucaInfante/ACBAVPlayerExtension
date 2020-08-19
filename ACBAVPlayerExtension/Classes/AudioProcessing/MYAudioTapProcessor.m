@@ -121,7 +121,7 @@ static OSStatus AU_RenderCallback(void *inRefCon, AudioUnitRenderActionFlags *io
 				MTAudioProcessingTapCallbacks callbacks;
 				
 				callbacks.version = kMTAudioProcessingTapCallbacksVersion_0;
-                callbacks.clientInfo = (__bridge void *)self;
+		                callbacks.clientInfo = (__bridge void *)self;
 				callbacks.init = tap_InitCallback;
 				callbacks.finalize = tap_FinalizeCallback;
 				callbacks.prepare = tap_PrepareCallback;
@@ -289,9 +289,10 @@ static void tap_PrepareCallback(MTAudioProcessingTapRef tap, CMItemCount maxFram
 {
 	AVAudioTapProcessorContext *context = (AVAudioTapProcessorContext *)MTAudioProcessingTapGetStorage(tap);
     
-	if (!((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled) return;
+	if (((__bridge MYAudioTapProcessor *)context->self) == NULL) return;
+
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
-    self.format = [[AVAudioFormat alloc] initWithStreamDescription:processingFormat];
+    	self.format = [[AVAudioFormat alloc] initWithStreamDescription:processingFormat];
 
 	// Store sample rate for -setCenterFrequency:.
 	context->sampleRate = processingFormat->mSampleRate;
@@ -412,7 +413,7 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 		return;
 	}
 	
-	if (!((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled) return;
+	if (((__bridge MYAudioTapProcessor *)context->self) == NULL) return;
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
 	
