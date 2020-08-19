@@ -413,8 +413,8 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 	}
 	
 
-	if (((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled == NULL) return;
-		NSLog(@"uhm %d", (((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled == NULL));
+	if (((__bridge MYAudioTapProcessor *)context->self).enableBandpassFilter == NULL) return;
+		NSLog(@"uhm %d", (((__bridge MYAudioTapProcessor *)context->self).enableBandpassFilter == NULL));
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
 	
