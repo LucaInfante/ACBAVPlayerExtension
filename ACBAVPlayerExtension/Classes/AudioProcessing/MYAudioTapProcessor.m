@@ -289,7 +289,7 @@ static void tap_PrepareCallback(MTAudioProcessingTapRef tap, CMItemCount maxFram
 {
 	AVAudioTapProcessorContext *context = (AVAudioTapProcessorContext *)MTAudioProcessingTapGetStorage(tap);
     
-	if (((__bridge MYAudioTapProcessor *)context->self) == NULL) return;
+	if (((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled == NULL) return;
 
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
     	self.format = [[AVAudioFormat alloc] initWithStreamDescription:processingFormat];
@@ -413,7 +413,7 @@ static void tap_ProcessCallback(MTAudioProcessingTapRef tap, CMItemCount numberF
 		return;
 	}
 	
-	if (((__bridge MYAudioTapProcessor *)context->self) == NULL) return;
+	if (((__bridge MYAudioTapProcessor *)context->self).isBandpassFilterEnabled == NULL) return;
 	
 	MYAudioTapProcessor *self = ((__bridge MYAudioTapProcessor *)context->self);
 	
