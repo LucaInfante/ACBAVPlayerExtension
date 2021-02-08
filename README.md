@@ -1,3 +1,5 @@
+# Forked for personal interventions and not "worthy" of pull request or original git was abandoned.
+
 # ACBAVPlayerExtension
 
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ACBAVPlayer.svg)](https://img.shields.io/cocoapods/v/ACBAVPlayer.svg)
